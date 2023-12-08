@@ -1,0 +1,34 @@
+{
+  "name": "square",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/audiowide": "^5.0.17",
+    "@fontsource/krona-one": "^5.0.8",
+    "@fontsource/roboto": "^5.0.8",
+    "@glif/filecoin-address": "^2.0.43",
+    "@mui/icons-material": "^5.14.16",
+    "@mui/material": "^5.14.17",
+    "@rainbow-me/rainbowkit": "^1.2.0",
+    "framer-motion": "^10.6.8",
+    "next": "14.0.1",
+    "pino-pretty": "^10.2.3",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hot-toast": "^2.4.1",
+    "viem": "^1.19.1",
+    "wagmi": "^1.4.6"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "14.0.1"
+  }
+}
