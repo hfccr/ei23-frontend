@@ -57,7 +57,7 @@ export default function Home() {
           className={styles.card}
           sx={{ background: "linear-gradient(135deg,#d0e,#91f)", margin: 2 }}
         >
-          <Link href="/dapp/stake/about">
+          <Link href="/dapp/stake/stake">
             <Box sx={{ width: 100, height: 100 }}>
               <PriceChange sx={{ fontSize: 80 }} />
             </Box>
