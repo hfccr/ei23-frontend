@@ -18,6 +18,7 @@ import {
 } from "@/hooks/useClientRegistry";
 import { EmulateClient } from "./EmulateClient";
 import { useDoesClientHaveAllocationRequest } from "@/hooks/useSubsidyDao";
+import { AllocationRequest } from "./AllocationRequest";
 
 export default function Allocation() {
   const [hydrated, setHydrated] = useState(false);
@@ -62,7 +63,7 @@ export default function Allocation() {
   return (
     <Box>
       {isLoading && <Skeleton />}
-      {isError && <Typography>{error.message}</Typography>}
+      {isError && <Alert severity="error">An error occured</Alert>}
       {hydrated && !isLoading && !isError && (
         <>
           {clientRegistered && !clientWhitelisted && (
@@ -73,7 +74,7 @@ export default function Allocation() {
             </Alert>
           )}
           {clientRegistered && clientWhitelisted && !allocationRequest && (
-            <>create allocation request</>
+            <AllocationRequest />
           )}
           {clientRegistered && clientWhitelisted && allocationRequest && (
             <Alert severity="info">
