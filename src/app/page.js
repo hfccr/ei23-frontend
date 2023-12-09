@@ -36,7 +36,7 @@ export default function Home() {
               <Save sx={{ fontSize: 80 }} />
             </Box>
             <h2>Filecoin Provider</h2>
-            <p>Raise Money By Issuing Equity</p>
+            <p>Store High Quality High Retrieval Probability Data Sets</p>
           </Link>
         </Box>
         <Box
