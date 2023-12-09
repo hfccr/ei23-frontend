@@ -21,7 +21,6 @@ export default function ClientRegistration() {
   const { address } = useAccount();
   const { data, isLoading, isError, error } = useIsClientRegistered(address);
   const { data: allClients } = useAllClients();
-  console.log(allClients);
   useEffect(() => {
     setHydrated(true);
   }, []);
