@@ -60,13 +60,6 @@ export default function ClientLayout({ children }) {
             LinkComponent={Link}
             sx={{ alignItems: "flex-start", fontSize: "large" }}
           />
-          <Tab
-            label="Retrieve Deals"
-            value="deals"
-            href="/dapp/client/deals"
-            LinkComponent={Link}
-            sx={{ alignItems: "flex-start", fontSize: "large" }}
-          />
         </Tabs>
         <>{children}</>
       </Stack>
