@@ -11,6 +11,13 @@ import { parseEther } from "viem";
 
 export function EmulateStorageProvider() {
   const [storageProviderId, setStorageProviderId] = React.useState();
+  const [storageProviderName, setStorageProviderName] = React.useState("");
+  const [storageProviderWebsite, setStorageProviderWebsite] =
+    React.useState("");
+  const [storageProviderRegion, setStorageProviderRegion] = React.useState("");
+  const [storageProviderCapacity, setStorageProviderCapacity] =
+    React.useState("");
+
   const debouncedStorageProviderId = useDebounce(storageProviderId);
   const {
     config,
@@ -47,6 +54,50 @@ export function EmulateStorageProvider() {
             }}
             value={storageProviderId}
             onChange={(e) => setStorageProviderId(e.target.value)}
+            sx={{ margin: 2 }}
+          />
+          <TextField
+            id="registerProviderName"
+            label="Provider Name"
+            type="string"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={storageProviderName}
+            onChange={(e) => setStorageProviderName(e.target.value)}
+            sx={{ margin: 2 }}
+          />
+          <TextField
+            id="registerDataOrgWebsite"
+            label="Organization Website"
+            type="string"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={storageProviderWebsite}
+            onChange={(e) => setStorageProviderWebsite(e.target.value)}
+            sx={{ margin: 2 }}
+          />
+          <TextField
+            id="registerRegion"
+            label="Region"
+            type="string"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={storageProviderRegion}
+            onChange={(e) => setStorageProviderRegion(e.target.value)}
+            sx={{ margin: 2 }}
+          />
+          <TextField
+            id="registerCapacity"
+            label="Network Capacity"
+            type="string"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={storageProviderCapacity}
+            onChange={(e) => setStorageProviderCapacity(e.target.value)}
             sx={{ margin: 2 }}
           />
           <Box sx={{ textAlign: "center", margin: 1 }}>
