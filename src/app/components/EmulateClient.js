@@ -5,12 +5,19 @@ import {
   useWaitForTransaction,
 } from "wagmi";
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
 import { useDebounce } from "@/hooks/useDebounce";
 import ClientRegistry from "@/constants/ClientRegistry.json";
 
 export function EmulateClient() {
   const [clientId, setClientId] = React.useState();
   const [clientName, setClientName] = React.useState("");
+  const [clientWebsite, setClientWebsite] = React.useState("");
+  const [clientRegion, setClientRegion] = React.useState("");
   const debouncedClientId = useDebounce(clientId);
   const debouncedClientName = useDebounce(clientName);
   const {
@@ -25,8 +32,6 @@ export function EmulateClient() {
     enabled: Boolean(debouncedClientId && debouncedClientName),
   });
   const { data, error, isError, write } = useContractWrite(config);
-  console.log(error);
-  console.log(isError);
 
   const { isLoading, isSuccess } = useWaitForTransaction({
     hash: data?.hash,
@@ -64,6 +69,60 @@ export function EmulateClient() {
             onChange={(e) => setClientName(e.target.value)}
             sx={{ margin: 2 }}
           />
+          <TextField
+            id="registerDataOwnerName"
+            label="Organization Website"
+            type="string"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={clientWebsite}
+            onChange={(e) => setClientWebsite(e.target.value)}
+            sx={{ margin: 2 }}
+          />
+          <TextField
+            id="registerRegion"
+            label="Region"
+            type="string"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={clientRegion}
+            onChange={(e) => setClientRegion(e.target.value)}
+            sx={{ margin: 2 }}
+          />
+          <FormControl>
+            <FormLabel id="demo-row-radio-buttons-group-label">
+              Expected Data Access Type
+            </FormLabel>
+            <RadioGroup
+              row
+              aria-labelledby="demo-row-radio-buttons-group-label"
+              name="row-radio-buttons-group"
+            >
+              <FormControlLabel
+                value="standard"
+                control={<Radio />}
+                label="Standard"
+              />
+              <FormControlLabel
+                value="Nearline"
+                control={<Radio />}
+                label="Nearline"
+              />
+              <FormControlLabel
+                value="coldline"
+                control={<Radio />}
+                label="Coldline"
+              />
+              <FormControlLabel
+                value="archive"
+                disabled
+                control={<Radio />}
+                label="Archive"
+              />
+            </RadioGroup>
+          </FormControl>
           <Box sx={{ textAlign: "center", margin: 1 }}>
             <Button
               type="submit"
@@ -74,6 +133,7 @@ export function EmulateClient() {
               {isLoading ? "Registring..." : "Register Client"}
             </Button>
           </Box>
+
           {isSuccess && (
             <div>
               Successfully Emulated Client Actor!
