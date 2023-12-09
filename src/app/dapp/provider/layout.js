@@ -52,7 +52,7 @@ export default function ProviderLayout({ children }) {
             LinkComponent={Link}
             sx={{ alignItems: "flex-start", fontSize: "large" }}
           />
-          <Tab
+          {/* <Tab
             color="secondary"
             label="Emulate Miner"
             value="emulate"
@@ -66,7 +66,7 @@ export default function ProviderLayout({ children }) {
             href="/dapp/provider/deals"
             LinkComponent={Link}
             sx={{ alignItems: "flex-start", fontSize: "large" }}
-          />
+          /> */}
         </Tabs>
         <>{children}</>
       </Stack>
