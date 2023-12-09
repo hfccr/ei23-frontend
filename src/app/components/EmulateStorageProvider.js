@@ -6,27 +6,24 @@ import {
 } from "wagmi";
 import { Box, Button, Container, TextField } from "@mui/material";
 import { useDebounce } from "@/hooks/useDebounce";
-import ClientRegistry from "@/constants/ClientRegistry.json";
+import StorageProviderRegistry from "@/constants/StorageProviderRegistry.json";
+import { parseEther } from "viem";
 
-export function EmulateClient() {
-  const [clientId, setClientId] = React.useState();
-  const [clientName, setClientName] = React.useState("");
-  const debouncedClientId = useDebounce(clientId);
-  const debouncedClientName = useDebounce(clientName);
+export function EmulateStorageProvider() {
+  const [storageProviderId, setStorageProviderId] = React.useState();
+  const debouncedStorageProviderId = useDebounce(storageProviderId);
   const {
     config,
     error: prepareError,
     isError: isPrepareError,
   } = usePrepareContractWrite({
-    address: ClientRegistry.address,
-    abi: ClientRegistry.abi,
+    address: StorageProviderRegistry.address,
+    abi: StorageProviderRegistry.abi,
     functionName: "register",
-    args: [parseInt(debouncedClientId), debouncedClientName],
-    enabled: Boolean(debouncedClientId && debouncedClientName),
+    args: [debouncedStorageProviderId],
+    enabled: Boolean(debouncedStorageProviderId),
   });
   const { data, error, isError, write } = useContractWrite(config);
-  console.log(error);
-  console.log(isError);
 
   const { isLoading, isSuccess } = useWaitForTransaction({
     hash: data?.hash,
@@ -38,30 +35,18 @@ export function EmulateClient() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            console.log("On submit called");
             write?.();
           }}
         >
           <TextField
-            id="registerClientId"
-            label="Client ID"
+            id="registerStorageProviderId"
+            label="StorageProvider ID"
             type="number"
             InputLabelProps={{
               shrink: true,
             }}
-            value={clientId}
-            onChange={(e) => setClientId(e.target.value)}
-            sx={{ margin: 2 }}
-          />
-          <TextField
-            id="registerClientName"
-            label="Client Name"
-            type="string"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            value={clientName}
-            onChange={(e) => setClientName(e.target.value)}
+            value={storageProviderId}
+            onChange={(e) => setStorageProviderId(e.target.value)}
             sx={{ margin: 2 }}
           />
           <Box sx={{ textAlign: "center", margin: 1 }}>
@@ -71,12 +56,12 @@ export function EmulateClient() {
               variant="outlined"
               disabled={!write || isLoading}
             >
-              {isLoading ? "Registring..." : "Register Client"}
+              {isLoading ? "Registring..." : "Register StorageProvider"}
             </Button>
           </Box>
           {isSuccess && (
             <div>
-              Successfully Emulated Client Actor!
+              Successfully Emulated StorageProvider Actor!
               <Box sx={{ textAlign: "center" }}>
                 <Button
                   href={`https://fvm.starboard.ventures/calibration/explorer/tx/${data?.hash}`}

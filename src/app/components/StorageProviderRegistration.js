@@ -1,4 +1,4 @@
-"use client";
+"use storageProvider";
 import { useState, useEffect } from "react";
 import {
   Skeleton,
@@ -11,16 +11,17 @@ import {
 } from "@mui/material";
 import { useAccount, useBalance } from "wagmi";
 import {
-  useAllClients,
-  useIsClientRegistered,
-} from "@/hooks/useClientRegistry";
-import { EmulateClient } from "./EmulateClient";
+  useAllStorageProviders,
+  useIsStorageProviderRegistered,
+} from "@/hooks/useStorageProviderRegistry";
+import { EmulateStorageProvider } from "./EmulateStorageProvider";
 
-export default function ClientRegistration() {
+export default function StorageProviderRegistration() {
   const [hydrated, setHydrated] = useState(false);
   const { address } = useAccount();
-  const { data, isLoading, isError, error } = useIsClientRegistered(address);
-  const { data: allClients } = useAllClients();
+  const { data, isLoading, isError, error } =
+    useIsStorageProviderRegistered(address);
+  const { data: allStorageProviders } = useAllStorageProviders();
   useEffect(() => {
     setHydrated(true);
   }, []);
@@ -39,7 +40,7 @@ export default function ClientRegistration() {
           )}
           {!data && (
             <>
-              <EmulateClient />
+              <EmulateStorageProvider />
             </>
           )}
         </>

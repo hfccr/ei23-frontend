@@ -4,11 +4,11 @@ import { Tab, Box, Divider, Stack, Tabs, Typography } from "@mui/material";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function ClientLayout({ children }) {
+export default function DaoLayout({ children }) {
   const path = usePathname();
-  let selected = "about";
-  if (path.indexOf("deals") >= 0) {
-    selected = "deals";
+  let selected = "client";
+  if (path.indexOf("storageProvider") >= 0) {
+    selected = "storageProvider";
   } else if (path.indexOf("allocation") >= 0) {
     selected = "allocation";
   }
@@ -22,12 +22,13 @@ export default function ClientLayout({ children }) {
           fontSize: "x-large",
           cursor: "pointer",
           background:
-            "radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)",
+            "radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%)",
           padding: 2,
+          paddingLeft: 5,
           borderRadius: 1,
         }}
       >
-        Client
+        LP DAO
       </Box>
       <Stack direction="row" sx={{ padding: 2, marginTop: 4 }} spacing={4}>
         <Tabs
@@ -47,23 +48,23 @@ export default function ClientLayout({ children }) {
         >
           <Tab
             color="secondary"
-            label="Register"
-            value="about"
-            href="/dapp/client/about"
+            label="Client"
+            value="client"
+            href="/dapp/dao/client"
+            LinkComponent={Link}
+            sx={{ alignItems: "flex-start", fontSize: "large" }}
+          />
+          <Tab
+            label="Provider"
+            value="storageProvider"
+            href="/dapp/dao/storageProvider"
             LinkComponent={Link}
             sx={{ alignItems: "flex-start", fontSize: "large" }}
           />
           <Tab
             label="Allocation"
             value="allocation"
-            href="/dapp/client/allocation"
-            LinkComponent={Link}
-            sx={{ alignItems: "flex-start", fontSize: "large" }}
-          />
-          <Tab
-            label="Retrieve Deals"
-            value="deals"
-            href="/dapp/client/deals"
+            href="/dapp/dao/allocation"
             LinkComponent={Link}
             sx={{ alignItems: "flex-start", fontSize: "large" }}
           />

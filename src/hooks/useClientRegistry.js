@@ -33,3 +33,14 @@ export function useAllClients(address) {
   });
   return { isSuccess, data, isLoading, isError, error };
 }
+
+export function useGetClientAllocationByAddress(address) {
+  const { data, isError, isLoading, error, isSuccess } = useContractRead({
+    address: ClientRegistry.address,
+    abi: ClientRegistry.abi,
+    functionName: "getClientAllocationByAddress",
+    args: [address],
+    watch: true,
+  });
+  return { isSuccess, data, isLoading, isError, error };
+}

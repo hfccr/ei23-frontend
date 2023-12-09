@@ -40,7 +40,7 @@ export default function Header() {
               component="div"
               sx={{ flexGrow: 1, fontFamily: "Audiowide" }}
             >
-              SQUARE
+              RIFIL
             </Typography>
           </Link>
           <Box sx={{ marginLeft: "auto" }}>

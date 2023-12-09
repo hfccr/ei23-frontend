@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { motion } from "framer-motion";
 import { Box, Typography } from "@mui/material";
-import { Person, Save } from "@mui/icons-material";
+import { Person, Save, Groups, PriceChange } from "@mui/icons-material";
 import Link from "next/link";
 
 export default function Home() {
@@ -37,6 +37,32 @@ export default function Home() {
             </Box>
             <h2>Filecoin Provider</h2>
             <p>Raise Money By Issuing Equity</p>
+          </Link>
+        </Box>
+        <Box
+          className={styles.card}
+          sx={{ background: "linear-gradient(135deg,#d0e,#91f)", margin: 2 }}
+        >
+          <Link href="/dapp/dao/client">
+            <Box sx={{ width: 100, height: 100 }}>
+              <Groups sx={{ fontSize: 80 }} />
+            </Box>
+            <h2>DAO</h2>
+            <p>
+              Manage Client Onboarding, Provider Onboarding & Subsidy Allocation
+            </p>
+          </Link>
+        </Box>
+        <Box
+          className={styles.card}
+          sx={{ background: "linear-gradient(135deg,#d0e,#91f)", margin: 2 }}
+        >
+          <Link href="/dapp/stake/about">
+            <Box sx={{ width: 100, height: 100 }}>
+              <PriceChange sx={{ fontSize: 80 }} />
+            </Box>
+            <h2>Stake</h2>
+            <p>Stake Filecoin To Earn Interest & Subsidize Client Storage</p>
           </Link>
         </Box>
       </div>

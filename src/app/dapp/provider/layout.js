@@ -4,13 +4,13 @@ import { Tab, Box, Divider, Stack, Tabs, Typography } from "@mui/material";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function ClientLayout({ children }) {
+export default function ProviderLayout({ children }) {
   const path = usePathname();
   let selected = "about";
   if (path.indexOf("deals") >= 0) {
     selected = "deals";
-  } else if (path.indexOf("allocation") >= 0) {
-    selected = "allocation";
+  } else if (path.indexOf("emulate") >= 0) {
+    selected = "emulate";
   }
   return (
     <>
@@ -21,13 +21,12 @@ export default function ClientLayout({ children }) {
           fontFamily: "Krona One",
           fontSize: "x-large",
           cursor: "pointer",
-          background:
-            "radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)",
+          background: "linear-gradient(135deg,#d0e,#91f)",
           padding: 2,
           borderRadius: 1,
         }}
       >
-        Client
+        Provider
       </Box>
       <Stack direction="row" sx={{ padding: 2, marginTop: 4 }} spacing={4}>
         <Tabs
@@ -49,21 +48,22 @@ export default function ClientLayout({ children }) {
             color="secondary"
             label="Register"
             value="about"
-            href="/dapp/client/about"
+            href="/dapp/provider/about"
             LinkComponent={Link}
             sx={{ alignItems: "flex-start", fontSize: "large" }}
           />
           <Tab
-            label="Allocation"
-            value="allocation"
-            href="/dapp/client/allocation"
+            color="secondary"
+            label="Emulate Miner"
+            value="emulate"
+            href="/dapp/provider/emulate"
             LinkComponent={Link}
             sx={{ alignItems: "flex-start", fontSize: "large" }}
           />
           <Tab
             label="Retrieve Deals"
             value="deals"
-            href="/dapp/client/deals"
+            href="/dapp/provider/deals"
             LinkComponent={Link}
             sx={{ alignItems: "flex-start", fontSize: "large" }}
           />
