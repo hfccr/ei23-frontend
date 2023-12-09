@@ -13,14 +13,20 @@ import { useAccount, useBalance } from "wagmi";
 import {
   useAllClients,
   useIsClientRegistered,
+  useIsClientWhitelisted,
 } from "@/hooks/useClientRegistry";
 import { EmulateClient } from "./EmulateClient";
 
 export default function ClientRegistration() {
   const [hydrated, setHydrated] = useState(false);
   const { address } = useAccount();
-  const { data, isLoading, isError, error } = useIsClientRegistered(address);
-  const { data: allClients } = useAllClients();
+  const {
+    data: registered,
+    isLoading,
+    isError,
+    error,
+  } = useIsClientRegistered(address);
+  const { data: whitelisted } = useIsClientWhitelisted(address);
   useEffect(() => {
     setHydrated(true);
   }, []);
@@ -30,14 +36,20 @@ export default function ClientRegistration() {
       {isError && <Typography>{error.message}</Typography>}
       {hydrated && !isLoading && !isError && (
         <>
-          {data && (
+          {registered && !whitelisted && (
             <Alert severity="info">
               You have successfully registered. The DAO is evaulating your
               application. You will be whitelisted to use the platform once the
               DAO approves.
             </Alert>
           )}
-          {!data && (
+          {registered && whitelisted && (
+            <Alert severity="success">
+              You have successfully registered and whitelisted. You can now use
+              the platform.
+            </Alert>
+          )}
+          {!registered && (
             <>
               <EmulateClient />
             </>
