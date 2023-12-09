@@ -9,8 +9,8 @@ export default function ClientLayout({ children }) {
   let selected = "about";
   if (path.indexOf("deals") >= 0) {
     selected = "deals";
-  } else if (path.indexOf("newdeal") >= 0) {
-    selected = "newdeal";
+  } else if (path.indexOf("allocation") >= 0) {
+    selected = "allocation";
   }
   return (
     <>
@@ -54,9 +54,9 @@ export default function ClientLayout({ children }) {
             sx={{ alignItems: "flex-start", fontSize: "large" }}
           />
           <Tab
-            label="New Deal"
-            value="newdeal"
-            href="/dapp/client/newdeal"
+            label="Allocation"
+            value="allocation"
+            href="/dapp/client/allocation"
             LinkComponent={Link}
             sx={{ alignItems: "flex-start", fontSize: "large" }}
           />

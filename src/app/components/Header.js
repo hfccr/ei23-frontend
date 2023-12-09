@@ -17,12 +17,6 @@ export default function Header() {
           <Link href="/">
             <Box sx={{ marginLeft: 1, marginRight: 1 }}>
               <motion.div
-                sx={{
-                  width: 150,
-                  height: 150,
-                  background: "white",
-                  borderRadius: 30,
-                }}
                 className="container"
                 whileHover={{ scale: 1.2, rotate: 90 }}
                 whileTap={{
