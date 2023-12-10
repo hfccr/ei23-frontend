@@ -18,8 +18,8 @@ import { brandingDarkTheme } from "@/util/theme";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Square",
-  description: "Filecoin Square",
+  title: "RIFIL",
+  description: "Filecoin RIFIL",
 };
 
 export default function RootLayout({ children }) {

@@ -7,8 +7,8 @@ import { usePathname } from "next/navigation";
 export default function ClientLayout({ children }) {
   const path = usePathname();
   let selected = "about";
-  if (path.indexOf("deals") >= 0) {
-    selected = "deals";
+  if (path.indexOf("redeem") >= 0) {
+    selected = "redeem";
   } else if (path.indexOf("allocation") >= 0) {
     selected = "allocation";
   }
@@ -57,6 +57,13 @@ export default function ClientLayout({ children }) {
             label="Allocation"
             value="allocation"
             href="/dapp/client/allocation"
+            LinkComponent={Link}
+            sx={{ alignItems: "flex-start", fontSize: "large" }}
+          />
+          <Tab
+            label="Redeem"
+            value="redeem"
+            href="/dapp/client/redeem"
             LinkComponent={Link}
             sx={{ alignItems: "flex-start", fontSize: "large" }}
           />

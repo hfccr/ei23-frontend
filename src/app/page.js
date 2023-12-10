@@ -11,7 +11,8 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.center}>
         <Typography variant="h5">
-          Investment Vehicles For Filecoin Clients
+          Client Investment Using DeFi Liquid Staking Data DAO Based On
+          Retrieval Royalties
         </Typography>
       </div>
       <div className={styles.grid}>

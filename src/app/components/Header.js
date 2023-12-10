@@ -12,7 +12,7 @@ import Link from "next/link";
 export default function Header() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed" sx={{ background: "transparent" }}>
+      <AppBar position="fixed" sx={{ background: "black" }}>
         <Toolbar sx={{ marginTop: 3 }}>
           <Link href="/">
             <Box sx={{ marginLeft: 1, marginRight: 1 }}>
